@@ -4,16 +4,21 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Student Data</h1>
-    <table>
+    <table border="1px">
         <thead>
             <tr>
-                <th>stu_id</th>
-                <th>stu_name</th>
-                <th>stu_number</th>
-                <th>stu_password</th>
-                <th>stu_phone</th>
-                <th>stu_wechat</th>
+                <th>id</th>
+                <th>学生</th>
+                <th>学校</th>
+                <th>专业</th>
+                <th>题目</th>
+                <th>字数</th>
+                <th>查重率</th>
+                <th>性质</th>
+                <th>新增时间</th>
+                <th>开题时间</th>
+                <th>正文时间</th>
+                <th>写手</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +30,12 @@
                 <td>{{ row.3 }}</td>
                 <td>{{ row.4 }}</td>
                 <td>{{ row.5 }}</td>
+                <td>{{ row.6 }}</td>
+                <td>{{ row.7 }}</td>
+                <td>{{ row.8 }}</td>
+                <td>{{ row.9 }}</td>
+                <td>{{ row.10 }}</td>
+                <td>{{ row.11 }}</td>
             </tr>
             {% endfor %}
         </tbody>
