@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<script src="/static/js/jquery-3.6.0.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/all.css">
+<script src="/static/js/specialists.js"></script>
+<head>
+    <title>专业管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                修改专业
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+             data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h5>填写需修改的专业id：</h5>
+                <label>*id</label><input type="text" id="spe_id" value=""><br/>
+                <h5>填入修改：</h5>
+                <label>专业</label><input type="text" id="spe_name" value=""><br/>
+                <button class="btn btn-dark btn-sm" type="button" id="modifySpeBtn">修改</button>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                新增专业
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+             data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h5>填写需增加的专业：</h5>
+                <label>*专业</label><input type="text" id="insert_spe_name" value=""><br/>
+                <button class="btn btn-dark btn-sm" type="button" id="insertSpeBtn">添加</button>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                删除专业
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+             data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h5>填写需删除的专业id：</h5>
+                <label>*id</label><input type="text" id="del_spe_id" value=""><br/>
+                <button class="btn btn-dark btn-sm" type="button" id="delSpeBtn">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <table id="custom">
+        </table>
+    </div>
+</div>
+</body>
+</html>

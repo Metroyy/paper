@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- 左侧导航栏 -->
+        <nav class="ms-sm-auto col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <h5><a class="nav-link" href="http://127.0.0.1:8000/home" onclick="">home</a></h5>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapsePaper" role="button"
+                               aria-expanded="false" aria-controls="collapsePaper">论文</a></h5>
+                        <div class="collapse" id="collapsePaper">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link active" href="#"
+                                           onclick="loadContent('/static/html/all.html')" id="all-data">全部查询</a>
+                                    </h8>
+                                </li>
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#" onclick="loadContent('/static/html/choose.html')"
+                                           id="paper-management">论文管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapseSpecialists"
+                               role="button" aria-expanded="false" aria-controls="collapseSpecialists">专业</a></h5>
+                        <div class="collapse" id="collapseSpecialists">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#"
+                                           onclick="loadContent('/static/html/specialists.html')"
+                                           id="specialists-management">专业管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapseSchools" role="button"
+                               aria-expanded="false" aria-controls="collapseSchools">学校</a></h5>
+                        <div class="collapse" id="collapseSchools">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#" onclick="loadContent('/static/html/schools.html')"
+                                           id="schools-management">学校管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapseWriters" role="button"
+                               aria-expanded="false" aria-controls="collapseWriters">写手</a></h5>
+                        <div class="collapse" id="collapseWriters">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#" onclick="loadContent('/static/html/writers.html')"
+                                           id="writers-management">写手管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapseAgents" role="button"
+                               aria-expanded="false" aria-controls="collapseAgents">代理</a></h5>
+                        <div class="collapse" id="collapseAgents">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#" onclick="loadContent('/static/html/agents.html')"
+                                           id="agents-management">代理管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link active" data-bs-toggle="collapse" href="#collapseFinance" role="button"
+                               aria-expanded="false" aria-controls="collapseFinance">收支</a></h5>
+                        <div class="collapse" id="collapseFinance">
+                            <!-- 添加下拉菜单项 -->
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <h8><a class="nav-link" href="#" onclick="loadContent('/static/html/finance.html')"
+                                           id="finance-management">收支管理</a></h8>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- 页面内容 -->
+        <main class="ms-sm-auto col-md-9 col-lg-10 px-md-4" id="pageContent">
+            <h1>主页</h1>
+        </main>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#all-data").click(function () {
+            $.ajax({
+                url: "/home/",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    var container = $("#container");
+                    container.empty();
+                    $("#AllTable").css("opacity", 1)
+                    $.each(response.data, function (index, item) {
+                        var row = "<tr><td>" + item.id + "</td><td>" + item.学生 + "</td><td>" + item.学号 + "</td><td>" + item.学生密码 + "</td><td>" + item.学生号码 + "</td><td>" + item.学生微信 + "</td><td>" + item.专业 + "</td><td>" + item.学校 + "</td><td>" + item.题目 + "</td><td>" + item.字数 + "</td><td>" + item.查重率 + "</td><td>" + item.论文性质 + "</td><td>" + item.新增时间 + "</td><td>" + item.开题时间 + "</td><td>" + item.正文时间 + "</td><td>" + item.写手 + "</td><td>" + item.写手性质 + "</td><td>" + item.代理 + "</td></tr>";
+                        container.append(row);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+
+    function loadContent(url) {
+        $.get(url, function (data) {
+            $("#pageContent").html(data);
+        });
+    }
+</script>
